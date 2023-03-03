@@ -7,7 +7,7 @@
 // Next, we need to create the basic structure of our app. Create a new directory that will act as the root of your project. Inside this new directory, create the following files: 
 
 //index.html
-<!DOCTYPE html>
+
 <html>
 <head>
     <title>To-Do List App</title>
@@ -105,14 +105,14 @@ class AddItem extends React.Component {
   }
  
   render() {
-    return (
+    return ({
       <form ref="form" onSubmit={this.handleSubmit}>
         <input type="text" ref="item" /> <input type="submit" value="add" /> </form> <ul> { this.props.items.map(item => <li key={item}>{item}</li> ) } </ul> ) }
 
 //install all the dependencies
 npm install –save react react-dom redux react-redux
 npm install –save-dev webpack
-
+    }
 //define webpack configuration
 const path = require('path'); const HtmlWebpackPlugin = require('html-webpack-plugin'); const webpack = require('webpack'); module.exports = { entry: './client/index.js', output: { filename: 'bundle.js', path: path.resolve(__dirname, 'public'), publicPath: './' }, plugins: [ new HtmlWebpackPlugin({ template: './client/index.html' }), new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin() ], devServer: { port: 4321, Open:true }, devtool: 'eval-source-map', module: { rules: [ { test: /\.js$/, loader: 'babel-loader', query: { presets: ['react', 'es2015'] } } ] } }
 
